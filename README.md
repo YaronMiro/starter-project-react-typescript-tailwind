@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+## Starter Project Create React App with built in support for TypeScript & TailWind
+
+* [Tailwind](https://tailwindcss.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
