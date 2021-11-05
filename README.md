@@ -10,6 +10,10 @@ This Starter Project in-rich with handful extras for intuitive and rapid develop
 -   [React App / TypeScript alias](https://github.com/oklas/react-app-rewire-alias#using-craco)
 -   [Prettier ](https://prettier.io/)
 
+### Optional VSCode Setup
+-   [VS Code React Setup - 5 Tips](https://dev.to/jamesqquick/vs-code-react-setup-5-tips-419d)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
