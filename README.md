@@ -30,7 +30,7 @@ You will also see any lint errors in the console.
 
 ### `npm run serve:build`
 
-Runs the app in the proaction mode.\
+Runs the app in the production mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 The page will load the production build version
