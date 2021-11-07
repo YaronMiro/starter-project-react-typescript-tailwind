@@ -21,6 +21,7 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
+        "test:no-watch": "craco test --watchAll=false",
         "serve:build": "serve -s build",
         "prettier:all": "npx prettier --write .",
         "eject": "react-scripts eject"
