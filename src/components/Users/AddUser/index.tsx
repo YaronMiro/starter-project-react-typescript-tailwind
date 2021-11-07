@@ -9,31 +9,65 @@ type FormData = {
 }
 
 const AddUser: React.FC = () => {
+
     const initialFormData: FormData = {
         isValid: false,
     }
 
+    // const updateFormData = (previousFormData) => {
+
+    //     return {
+    //         ...previousFormData,
+
+    //     }
+
+    // }
+
     const [formData, setFormData] = useState<FormData>(initialFormData)
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        // Preventing the page from reloading
+    const onUserNameChange = (fullName: string) => {
+        console.log('onUserNameChange', fullName)
+
+        setFormData((previousFormData) => {
+            return {
+                ...previousFormData,
+                fullName,
+            }
+        })
+    }
+
+    const onUserAgeChange = (age: string) => {
+        console.log('onUserAgeChange', age)
+
+        setFormData((previousFormData) => {
+            return {
+                ...previousFormData,
+                age: +age,
+            }
+        })
+    }
+
+    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log('from submitted')
     }
 
+    console.log(formData)
+    console.log(!formData.isValid)
+
     return (
-        <form onSubmit={onSubmit} className="main-form">
+        <form onSubmit={onSubmitHandler} className="main-form">
             <TextField
                 label="Username"
                 id="user-name"
-                onChange={(value) => console.log({ value })}
+                onChange={onUserNameChange}
             />
             <TextField
                 label="Age (Years)"
                 id="user-age"
-                onChange={(value) => console.log({ value })}
+                onChange={onUserAgeChange}
             />
-            <SubmitButton text="Add User" />
+            <SubmitButton text="Add User" disabled={!formData.isValid} />
         </form>
     )
 }
