@@ -23,9 +23,8 @@ const AddUser: React.FC<AddUserProps> = (props) => {
         setUserAge(+age)
     }
 
-    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        let errors = []
+    const getFormErrors = () => {
+        const errors = []
 
         if (userName === '' || userAge === 0) {
             errors.push('Please Fill all fields')
@@ -34,6 +33,13 @@ const AddUser: React.FC<AddUserProps> = (props) => {
         if (userAge < 1) {
             errors.push('Age must be greater than zero')
         }
+
+        return errors
+    }
+
+    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        const errors = getFormErrors()
 
         if (errors.length) {
             onError(new UserFormError('Invalid input', errors[0]))

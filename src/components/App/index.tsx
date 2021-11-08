@@ -2,26 +2,24 @@ import React, { useState } from 'react'
 import AddUser from '@components/Users/AddUser'
 import UsersList from '@components/Users/UsersList'
 import Card from '@components/UI/Card'
-import Modal from '@components/UI/Modal'
+import ErrorModal from '@components/UI/ErrorModal'
 import User from '@models/User'
 import UserFormError from '@models/UserFormError'
 
 const App: React.FC = () => {
     const [users, setUsers] = useState<User[]>([])
 
-    const [formError, setFormError] = useState<UserFormError>(
-        new UserFormError()
-    )
+    const [formError, setFormError] = useState<UserFormError | null>(null)
 
     const AddUserHandler = (user: User) => {
-        console.log('AddUserHandler', user)
         setUsers((previousUsers) => [...previousUsers, user])
     }
 
     const ErrorHandler = (error: UserFormError) => {
-        console.log('ErrorHandler', error)
         setFormError(error)
     }
+
+    const closeErrorModalHandler = () => setFormError(null)
 
     return (
         <div className="App">
@@ -36,7 +34,12 @@ const App: React.FC = () => {
                 <Card>
                     <UsersList users={users} />
                 </Card>
-                <Modal title="Some Title" description="some description" />
+                {formError && (
+                    <ErrorModal
+                        error={formError}
+                        onConfirm={closeErrorModalHandler}
+                    />
+                )}
             </main>
         </div>
     )
