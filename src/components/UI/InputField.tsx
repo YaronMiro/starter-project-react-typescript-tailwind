@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 
-type TextFieldProps = {
+type InputFieldProps = {
+    type: 'text' | 'number'
     id: string
     label: string
     name?: string
+    disabled?: boolean
     onChange: (value: string) => void
 }
 
-const TextField: React.FC<TextFieldProps> = (props) => {
+const TextField: React.FC<InputFieldProps> = (props) => {
     const [value, setValue] = useState<string>('')
 
-    const { id, label, name, onChange: onChangeCallback } = props
+    const { type, id, label, name, onChange: onChangeCallback } = props
 
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
         const newValue = event.currentTarget.value
@@ -21,11 +23,11 @@ const TextField: React.FC<TextFieldProps> = (props) => {
     return (
         <div className="form-group">
             <label htmlFor={id} className="label-control">
-                {label}{' '}
+                {label}
             </label>
             <input
                 className="input-control"
-                type="text"
+                type={type}
                 id={id}
                 name={name ?? id}
                 onChange={onChange}

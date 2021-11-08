@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import TextField from '@components/UI/TextField'
+import InputField from '@components/UI/InputField'
 import SubmitButton from '@components/UI/SubmitButton'
+import User from '@models/User'
 
-type FormData = {
+type UserForm = {
     isValid: boolean
-    fullName?: string
-    age?: number
+    fullName: string
+    age: number
 }
 
 const AddUser: React.FC = () => {
-
-    const initialFormData: FormData = {
+    const initialFormData: UserForm = {
         isValid: false,
+        fullName: '',
+        age: 0,
     }
 
     // const updateFormData = (previousFormData) => {
@@ -23,22 +25,18 @@ const AddUser: React.FC = () => {
 
     // }
 
-    const [formData, setFormData] = useState<FormData>(initialFormData)
+    const [formData, setFormData] = useState<UserForm>(initialFormData)
 
     const onUserNameChange = (fullName: string) => {
-        console.log('onUserNameChange', fullName)
-
         setFormData((previousFormData) => {
             return {
                 ...previousFormData,
-                fullName,
+                fullName: fullName.trim(),
             }
         })
     }
 
     const onUserAgeChange = (age: string) => {
-        console.log('onUserAgeChange', age)
-
         setFormData((previousFormData) => {
             return {
                 ...previousFormData,
@@ -49,7 +47,13 @@ const AddUser: React.FC = () => {
 
     const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log('from submitted')
+        const { fullName, age } = formData
+
+        if (fullName) {
+        }
+
+        const user = new User(fullName, age)
+        console.log('from submitted', user)
     }
 
     console.log(formData)
@@ -57,17 +61,19 @@ const AddUser: React.FC = () => {
 
     return (
         <form onSubmit={onSubmitHandler} className="main-form">
-            <TextField
+            <InputField
+                type="text"
                 label="Username"
                 id="user-name"
                 onChange={onUserNameChange}
             />
-            <TextField
+            <InputField
+                type="number"
                 label="Age (Years)"
                 id="user-age"
                 onChange={onUserAgeChange}
             />
-            <SubmitButton text="Add User" disabled={!formData.isValid} />
+            <SubmitButton text="Add User" />
         </form>
     )
 }
