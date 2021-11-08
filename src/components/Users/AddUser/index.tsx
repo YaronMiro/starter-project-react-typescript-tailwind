@@ -9,12 +9,18 @@ type UserForm = {
     age: number
 }
 
-const AddUser: React.FC = () => {
+type AddUserProps = {
+    onAddUser: (user: User) => void
+}
+
+const AddUser: React.FC<AddUserProps> = (props) => {
     const initialFormData: UserForm = {
         isValid: false,
         fullName: '',
         age: 0,
     }
+
+    const { onAddUser } = props
 
     // const updateFormData = (previousFormData) => {
 
@@ -49,11 +55,12 @@ const AddUser: React.FC = () => {
         event.preventDefault()
         const { fullName, age } = formData
 
-        if (fullName) {
+        if (fullName === '' && age === 0) {
+            console.log('[ERROR]', 'form empty')
         }
 
         const user = new User(fullName, age)
-        console.log('from submitted', user)
+        onAddUser(user)
     }
 
     console.log(formData)
