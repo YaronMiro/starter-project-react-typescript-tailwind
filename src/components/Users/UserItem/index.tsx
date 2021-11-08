@@ -10,7 +10,9 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     const {
         user: { age, fullName },
     } = props
-    return <div>{`${fullName} and Age is ${age}`}</div>
+
+    const yearText = age < 2 ? 'year' : 'years'
+    return <div>{`${fullName} (${age} ${yearText} old)`}</div>
 }
 
 export default UserItem

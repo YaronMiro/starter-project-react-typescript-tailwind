@@ -6,18 +6,34 @@ type InputFieldProps = {
     label: string
     name?: string
     disabled?: boolean
+    placeholder?: string
+    value: string | number
     onChange: (value: string) => void
 }
 
 const TextField: React.FC<InputFieldProps> = (props) => {
-    const [value, setValue] = useState<string>('')
+    const {
+        type,
+        id,
+        label,
+        name,
+        placeholder,
+        value,
+        onChange: onChangeCallback,
+    } = props
 
-    const { type, id, label, name, onChange: onChangeCallback } = props
+    const [inputValue, setInputValue] = useState<string | number>(value)
 
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-        const newValue = event.currentTarget.value
-        setValue(newValue)
-        onChangeCallback(newValue)
+        const newInputValue = event.currentTarget.value
+        setInputValue(newInputValue)
+        onChangeCallback(newInputValue)
+    }
+
+    const dynamicAttributes: { placeholder?: string; value?: string } = {}
+
+    if (placeholder) {
+        dynamicAttributes.placeholder = placeholder
     }
 
     return (
@@ -26,12 +42,13 @@ const TextField: React.FC<InputFieldProps> = (props) => {
                 {label}
             </label>
             <input
+                {...dynamicAttributes}
+                value={inputValue}
                 className="input-control"
                 type={type}
                 id={id}
                 name={name ?? id}
                 onChange={onChange}
-                value={value}
             />
         </div>
     )

@@ -1,77 +1,65 @@
 import React, { useState } from 'react'
 import InputField from '@components/UI/InputField'
-import SubmitButton from '@components/UI/SubmitButton'
+import Button from '@components/UI/Button'
 import User from '@models/User'
-
-type UserForm = {
-    isValid: boolean
-    fullName: string
-    age: number
-}
 
 type AddUserProps = {
     onAddUser: (user: User) => void
 }
 
 const AddUser: React.FC<AddUserProps> = (props) => {
-    const initialFormData: UserForm = {
-        isValid: false,
-        fullName: '',
-        age: 0,
-    }
-
     const { onAddUser } = props
 
-    const [formData, setFormData] = useState<UserForm>(initialFormData)
+    const [userName, setUserName] = useState<string>('')
+    const [userAge, setUserAge] = useState<number>(0)
 
-    const onUserNameChange = (fullName: string) => {
-        setFormData((previousFormData) => {
-            return {
-                ...previousFormData,
-                fullName: fullName.trim(),
-            }
-        })
+    const onUserNameChange = (name: string) => {
+        setUserName(name.trim())
     }
 
     const onUserAgeChange = (age: string) => {
-        setFormData((previousFormData) => {
-            return {
-                ...previousFormData,
-                age: +age,
-            }
-        })
+        setUserAge(+age)
     }
 
-    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmitHandler = (
+        event: React.FormEvent<HTMLFormElement>
+    ): boolean => {
         event.preventDefault()
-        const { fullName, age } = formData
 
-        if (fullName === '' && age === 0) {
-            console.log('[ERROR]', 'form empty')
+        if (userName === '' && userAge === 0) {
+            console.log('[ERROR] Please Fill all fields')
+            return false
         }
 
-        const user = new User(fullName, age)
-        onAddUser(user)
-    }
+        if (userAge < 1) {
+            console.log('[ERROR] Age must be greater than zero')
+            return false
+        }
 
-    console.log(formData)
-    console.log(!formData.isValid)
+        const user = new User(userName, userAge)
+        onAddUser(user)
+        return true
+    }
 
     return (
         <form onSubmit={onSubmitHandler} className="main-form">
             <InputField
                 type="text"
+                placeholder="Add user name"
                 label="Username"
                 id="user-name"
                 onChange={onUserNameChange}
+                value={userName}
             />
             <InputField
                 type="number"
+                placeholder="Add user age"
                 label="Age (Years)"
                 id="user-age"
                 onChange={onUserAgeChange}
+                value={userAge === 0 ? '' : userAge}
             />
-            <SubmitButton text="Add User" />
+            <Button text="Add User" type="submit" />
         </form>
     )
 }

@@ -5,20 +5,12 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: rgb(3, 10, 34);
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
-}
-
-
-.main-form {
-    padding: 15px 30px;
-    margin: 0 auto;
-    max-width: 500px;
-    border-radius: 5px;
-    background-color: white;
 }
 
  .form-group {
@@ -47,4 +39,11 @@ code {
 
   }
 
-
+.card {
+    margin: 50px auto 0 auto;
+    padding: 15px 30px;
+    max-width: 500px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
