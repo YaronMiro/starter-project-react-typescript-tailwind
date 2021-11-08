@@ -6,15 +6,15 @@ type UsersProps = {
     users: User[]
 }
 
-const Users: React.FC<UsersProps> = (props) => {
+const UsersList: React.FC<UsersProps> = (props) => {
     const { users } = props
     return (
-        <div>
+        <ul>
             {users.map((user) => (
                 <UserItem key={user.id} user={user} />
             ))}
-        </div>
+        </ul>
     )
 }
 
-export default Users
+export default UsersList

@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import InputField from '@components/UI/InputField'
 import Button from '@components/UI/Button'
 import User from '@models/User'
+import UserFormError from '@models/UserFormError'
 
 type AddUserProps = {
     onAddUser: (user: User) => void
+    onError: (user: UserFormError) => void
 }
 
 const AddUser: React.FC<AddUserProps> = (props) => {
-    const { onAddUser } = props
+    const { onAddUser, onError } = props
 
     const [userName, setUserName] = useState<string>('')
     const [userAge, setUserAge] = useState<number>(0)
@@ -21,24 +23,28 @@ const AddUser: React.FC<AddUserProps> = (props) => {
         setUserAge(+age)
     }
 
-    const onSubmitHandler = (
-        event: React.FormEvent<HTMLFormElement>
-    ): boolean => {
+    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+        let errors = []
 
-        if (userName === '' && userAge === 0) {
-            console.log('[ERROR] Please Fill all fields')
-            return false
+        if (userName === '' || userAge === 0) {
+            errors.push('Please Fill all fields')
         }
 
         if (userAge < 1) {
-            console.log('[ERROR] Age must be greater than zero')
-            return false
+            errors.push('Age must be greater than zero')
+        }
+
+        if (errors.length) {
+            onError(new UserFormError('Invalid input', errors[0]))
+            return
         }
 
         const user = new User(userName, userAge)
         onAddUser(user)
-        return true
+        //Reset input fields
+        setUserName('')
+        setUserAge(0)
     }
 
     return (

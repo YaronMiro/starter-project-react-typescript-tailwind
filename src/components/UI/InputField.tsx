@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 type InputFieldProps = {
     type: 'text' | 'number'
@@ -11,6 +11,8 @@ type InputFieldProps = {
     onChange: (value: string) => void
 }
 
+type DynamicInputAttributes = { placeholder?: string }
+
 const TextField: React.FC<InputFieldProps> = (props) => {
     const {
         type,
@@ -22,15 +24,12 @@ const TextField: React.FC<InputFieldProps> = (props) => {
         onChange: onChangeCallback,
     } = props
 
-    const [inputValue, setInputValue] = useState<string | number>(value)
-
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
         const newInputValue = event.currentTarget.value
-        setInputValue(newInputValue)
         onChangeCallback(newInputValue)
     }
 
-    const dynamicAttributes: { placeholder?: string; value?: string } = {}
+    const dynamicAttributes: DynamicInputAttributes = {}
 
     if (placeholder) {
         dynamicAttributes.placeholder = placeholder
@@ -43,7 +42,7 @@ const TextField: React.FC<InputFieldProps> = (props) => {
             </label>
             <input
                 {...dynamicAttributes}
-                value={inputValue}
+                value={value}
                 className="input-control"
                 type={type}
                 id={id}
