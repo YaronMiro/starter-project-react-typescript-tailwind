@@ -22,15 +22,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
 
     const { onAddUser } = props
 
-    // const updateFormData = (previousFormData) => {
-
-    //     return {
-    //         ...previousFormData,
-
-    //     }
-
-    // }
-
     const [formData, setFormData] = useState<UserForm>(initialFormData)
 
     const onUserNameChange = (fullName: string) => {

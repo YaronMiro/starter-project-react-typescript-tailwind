@@ -11,7 +11,7 @@ const Users: React.FC<UsersProps> = (props) => {
     return (
         <div>
             {users.map((user) => (
-                <UserItem user={user} />
+                <UserItem key={user.id} user={user} />
             ))}
         </div>
     )

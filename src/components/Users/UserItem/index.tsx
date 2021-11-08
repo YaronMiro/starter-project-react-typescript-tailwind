@@ -6,10 +6,11 @@ type UserItemProps = {
 }
 
 const UserItem: React.FC<UserItemProps> = (props) => {
+
     const {
-        user: { age, id, fullName },
+        user: { age, fullName },
     } = props
-    return <div key={id}>{`${fullName} and Age is ${age}`}</div>
+    return <div>{`${fullName} and Age is ${age}`}</div>
 }
 
 export default UserItem
