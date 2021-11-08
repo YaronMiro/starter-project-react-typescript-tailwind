@@ -31,9 +31,11 @@ const App: React.FC = () => {
                         onError={ErrorHandler}
                     />
                 </Card>
-                <Card>
-                    <UsersList users={users} />
-                </Card>
+                {users.length && (
+                    <Card>
+                        <UsersList users={users} />
+                    </Card>
+                )}
                 {formError && (
                     <ErrorModal
                         error={formError}

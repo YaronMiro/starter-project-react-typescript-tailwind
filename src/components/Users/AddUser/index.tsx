@@ -26,7 +26,7 @@ const AddUser: React.FC<AddUserProps> = (props) => {
     const getFormErrors = () => {
         const errors = []
 
-        if (userName === '' || userAge === 0) {
+        if (!!userName === false || userAge === 0) {
             errors.push('Please Fill all fields')
         }
 
