@@ -22,7 +22,7 @@ const ModalOverlay: React.FC<ModalProps> = (props) => {
     const { error, onConfirm } = props
 
     return (
-        <div className="backdrop" onClick={onConfirm}>
+        <div className="modal">
             <Card>
                 <h3>{error.title}</h3>
                 <p>{error.description}</p>
@@ -39,11 +39,11 @@ const ErrorModal: React.FC<ModalProps> = (props) => {
         <>
             {ReactDom.createPortal(
                 <Backdrop onConfirm={onConfirm} />,
-                document.getElementById('backdrop-root')!
+                document.body
             )}
             {ReactDom.createPortal(
                 <ModalOverlay onConfirm={onConfirm} error={error} />,
-                document.getElementById('overlay-root')!
+                document.body
             )}
         </>
     )
