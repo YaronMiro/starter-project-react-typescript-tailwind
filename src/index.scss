@@ -13,6 +13,14 @@ code {
         monospace;
 }
 
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
  .form-group {
 
     + .form-group {
@@ -40,10 +48,25 @@ code {
   }
 
 .card {
-    margin: 50px auto 0 auto;
+    min-height: 150px;
+    margin: 0 auto;
     padding: 15px 30px;
     max-width: 500px;
     border-radius: 5px;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+
+.backdrop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.308);
+}
+

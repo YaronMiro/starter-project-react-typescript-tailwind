@@ -22,20 +22,23 @@ const App: React.FC = () => {
     const closeErrorModalHandler = () => setFormError(null)
 
     return (
-        <div className="App">
-            <header className="App-header"></header>
+        <div className="app">
+            <header className="app-header"></header>
             <main>
+                <br />
                 <Card>
                     <AddUser
                         onAddUser={AddUserHandler}
                         onError={ErrorHandler}
                     />
                 </Card>
+                <br />
                 {users.length && (
                     <Card>
                         <UsersList users={users} />
                     </Card>
                 )}
+                <br />
                 {formError && (
                     <ErrorModal
                         error={formError}
