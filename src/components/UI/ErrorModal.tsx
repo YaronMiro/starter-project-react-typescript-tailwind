@@ -39,11 +39,11 @@ const ErrorModal: React.FC<ModalProps> = (props) => {
         <>
             {ReactDom.createPortal(
                 <Backdrop onConfirm={onConfirm} />,
-                document.body
+                document.body // document.getElementById()
             )}
             {ReactDom.createPortal(
                 <ModalOverlay onConfirm={onConfirm} error={error} />,
-                document.body
+                document.body // document.getElementById()
             )}
         </>
     )
