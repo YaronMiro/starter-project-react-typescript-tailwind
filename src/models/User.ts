@@ -1,8 +1,8 @@
 class User {
     id: string
 
-    constructor(public fullName: string, public age: number) {
-        this.id = '_' + Math.random().toString(36).substr(2, 9)
+    constructor(public fullName: string, public age: string) {
+        this.id = '_' + Math.random().toString(36).substring(2, 9)
     }
 }
 

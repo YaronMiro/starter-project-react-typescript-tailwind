@@ -11,7 +11,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
         user: { age, fullName },
     } = props
 
-    const yearText = age < 2 ? 'year' : 'years'
+    const yearText = +age < 2 ? 'year' : 'years'
     return <li>{`${fullName} (${age} ${yearText} old)`}</li>
 }
 
