@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Field from '@components/UI/Field'
 import FormGroup from '@components/UI/FormGroup'
 import Label from '@components/UI/Label'
@@ -14,27 +14,20 @@ type AddUserProps = {
 const AddUser: React.FC<AddUserProps> = (props) => {
     const { onAddUser, onError } = props
 
-    const [userName, setUserName] = useState<string>('')
-    const [userAge, setUserAge] = useState<string>('')
-
     const inputUserName = useRef<HTMLInputElement>(null)
     const inputUserAge = useRef<HTMLInputElement>(null)
 
-    const onUserNameChange = (name: string) => {
-        setUserName(name.trim())
-    }
-
-    const onUserAgeChange = (age: string) => {
-        setUserAge(age)
-    }
-
     const getFormErrors = () => {
         const errors = []
-        if (!!userName === false || !!userAge === false) {
+
+        const name = inputUserName.current!.value.trim()
+        const age = inputUserAge.current!.value.trim()
+
+        if (!!name === false || !!age === false) {
             errors.push('Please Fill all fields')
         }
 
-        if (+userAge < 1) {
+        if (+age < 1) {
             errors.push('Age must be greater than zero')
         }
 
@@ -50,7 +43,10 @@ const AddUser: React.FC<AddUserProps> = (props) => {
             return
         }
 
-        const user = new User(userName, userAge)
+        const name = inputUserName.current!.value.trim()
+        const age = inputUserAge.current!.value.trim()
+
+        const user = new User(name, age)
         onAddUser(user)
         inputUserName.current!.value = ''
         inputUserAge.current!.value = ''
@@ -68,7 +64,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
                     type="text"
                     placeholder="Add user name"
                     id={userNameId}
-                    onChange={onUserNameChange}
                 />
             </FormGroup>
             <FormGroup className="user-age-field">
@@ -78,7 +73,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
                     type="number"
                     placeholder="Add user age"
                     id={userAgeId}
-                    onChange={onUserAgeChange}
                 />
             </FormGroup>
             <FormGroup className="submit-button-field">
