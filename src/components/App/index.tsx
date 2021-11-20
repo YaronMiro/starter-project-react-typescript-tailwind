@@ -31,7 +31,6 @@ const App: React.FC = () => {
                         onError={ErrorHandler}
                     />
                 </Card>
-                <br />
                 {!!users.length && (
                     <Card>
                         <UsersList users={users} />

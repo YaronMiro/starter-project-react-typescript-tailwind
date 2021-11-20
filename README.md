@@ -4,6 +4,8 @@ This Starter Project in-rich with handful extras for intuitive and rapid develop
 
 -   [Tailwind](https://tailwindcss.com/)
 -   [TypeScript](https://www.typescriptlang.org/)
+-   [enzymejs](https://github.com/enzymejs/enzyme) - Testing library,
+    since using React 17 see also unofficial [wojtekmaj enzymejs](https://github.com/wojtekmaj/enzyme-adapter-react-17) for React 17.
 -   [React with SCSS](https://create-react-app.dev/docs/adding-a-sass-stylesheet)
 -   [Craco](https://github.com/gsoft-inc/craco)
 -   [Serve](https://www.npmjs.com/package/serve)
@@ -12,7 +14,6 @@ This Starter Project in-rich with handful extras for intuitive and rapid develop
 
 ### Optional VSCode Setup
 -   [VS Code React Setup - 5 Tips](https://dev.to/jamesqquick/vs-code-react-setup-5-tips-419d)
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
