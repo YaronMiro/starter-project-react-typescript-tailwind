@@ -1,3 +1,20 @@
+// Global Variables.
+$spacer: .5rem;
+$mobile-width: 500px;
+
+@mixin mobile {
+    @media (max-width: #{$mobile-width}) {
+      @content;
+    }
+  }
+
+@mixin desktop {
+    @media (min-width: #{$mobile-width}) {
+      @content;
+    }
+  }
+
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -17,68 +34,108 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     height: 100vh;
+
+    .main-section {
+        flex-basis: 90vw;
+
+        @include desktop {
+            flex-basis: 500px;
+        }
+    }
+
 }
 
- .form-group {
+.main-form {
+    display: flex;
+    flex-direction: column;
 
-    + .form-group {
-        margin-top: 15px;
+    > * {
+        margin-top: $spacer * 1.5;
     }
 
-   .input-control {
-        margin-top: 5px;
-        width: 100%;
-        border: 1px solid black;
+    .form-group {
+        display: flex;
+        flex-direction: column;
+
+        > * {
+            margin-top: $spacer;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            > * {
+                margin-top: auto;
+            }
+        }
+
+        &.user-name-field,
+        &.user-age-field {
+
+            label {
+                flex: 1;
+                margin-right: $spacer;
+            }
+
+            input {
+                flex: 4;
+            }
+        }
+
+        &.submit-button-field {
+            align-self: center;
+
+            @include desktop {
+                align-self: flex-end;
+            }
+        }
+
     }
-  
- }
 
- button {
-    border-radius: 5px;
-    background-color: yellowgreen;
-    padding: 5px 15px;
-    min-width: 100px;
-
-    &:disabled {
-        background-color: rgb(79, 110, 25);
-    }
-
-  }
+    button {
+        color: white;
+        border-radius: .2rem;
+        background-color: black;
+        padding: 5px 15px;
+        min-width: 100px;
+    
+        &:disabled {
+            background-color: rgb(79, 110, 25);
+        }
+    
+      }
+}
 
 .card {
-    min-height: 150px;
-    margin: 0 auto;
-    padding: 15px 30px;
-    max-width: 500px;
-    border-radius: 5px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    background: #f4f4f4;
+    padding: $spacer;
+    border-radius: .2rem;
+    box-shadow: 0 0px 6px 0px #00000012;
+    border: 1px solid #00000008;
 }
 
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.75);
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100vh;
+    // z-index: 10;
+    // background: rgba(0, 0, 0, 0.75);
 }
 
 .modal {
-    position: fixed;
-    top: 30vh;
-    left: 10%;
-    width: 80%;
-    z-index: 100;
-    overflow: hidden;
+    // position: fixed;
+    // top: 30vh;
+    // left: 10%;
+    // width: 80%;
+    // z-index: 100;
+    // overflow: hidden;
 }
 
 @media (min-width: 768px) {
     .modal {
-      left: calc(50% - 20rem);
-      width: 40rem;
+    //   left: calc(50% - 20rem);
+    //   width: 40rem;
     }
   }

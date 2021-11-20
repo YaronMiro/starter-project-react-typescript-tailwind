@@ -10,11 +10,9 @@ const Button: React.FC<ButtonProps> = (props) => {
     const { text, disabled, type } = props
 
     return (
-        <div className="form-group">
-            <button disabled={disabled} type={type}>
-                {text}
-            </button>
-        </div>
+        <button disabled={disabled} type={type}>
+            {text}
+        </button>
     )
 }
 

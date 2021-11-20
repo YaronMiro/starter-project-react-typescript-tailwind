@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react'
-import InputField from '@components/UI/InputField'
+import Field from '@components/UI/Field'
+import FormGroup from '@components/UI/FormGroup'
+import Label from '@components/UI/Label'
 import Button from '@components/UI/Button'
 import User from '@models/User'
 import UserFormError from '@models/UserFormError'
@@ -28,7 +30,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
 
     const getFormErrors = () => {
         const errors = []
-        // debugger
         if (!!userName === false || !!userAge === false) {
             errors.push('Please Fill all fields')
         }
@@ -51,37 +52,40 @@ const AddUser: React.FC<AddUserProps> = (props) => {
 
         const user = new User(userName, userAge)
         onAddUser(user)
-        // Reset input fields, by using ref instead of resting the state
-        console.log('Before', inputUserName.current!.value)
-        console.log('Before', inputUserAge.current!.value)
-
         inputUserName.current!.value = ''
         inputUserAge.current!.value = ''
-        console.log('after', inputUserName.current!.value)
-        console.log('after', inputUserAge.current!.value)
     }
+
+    const userNameId = 'user-name'
+    const userAgeId = 'user-name'
 
     return (
         <form onSubmit={onSubmitHandler} className="main-form">
-            <InputField
-                ref={inputUserName}
-                type="text"
-                placeholder="Add user name"
-                label="Username"
-                id="user-name"
-                onChange={onUserNameChange}
-                // value={userName}
-            />
-            <InputField
-                ref={inputUserAge}
-                type="number"
-                placeholder="Add user age"
-                label="Age (Years)"
-                id="user-age"
-                onChange={onUserAgeChange}
-                // value={userAge}
-            />
-            <Button text="Add User" type="submit" />
+            <FormGroup className="user-name-field">
+                <Label htmlFor={userNameId} text="User Name:"></Label>
+                <Field
+                    ref={inputUserName}
+                    type="text"
+                    placeholder="Add user name"
+                    id={userNameId}
+                    onChange={onUserNameChange}
+                />
+            </FormGroup>
+
+            <FormGroup className="user-age-field">
+                <Label htmlFor={userAgeId} text="User Age:"></Label>
+                <Field
+                    ref={inputUserAge}
+                    type="number"
+                    placeholder="Add user age"
+                    id={userAgeId}
+                    onChange={onUserAgeChange}
+                />
+            </FormGroup>
+
+            <FormGroup className="submit-button-field">
+                <Button text="Add User" type="submit" />
+            </FormGroup>
         </form>
     )
 }

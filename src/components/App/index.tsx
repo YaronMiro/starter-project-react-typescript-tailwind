@@ -24,8 +24,7 @@ const App: React.FC = () => {
     return (
         <div className="app">
             <header className="app-header"></header>
-            <main>
-                <br />
+            <main className="main-section">
                 <Card>
                     <AddUser
                         onAddUser={AddUserHandler}
@@ -33,12 +32,11 @@ const App: React.FC = () => {
                     />
                 </Card>
                 <br />
-                {users.length && (
+                {!!users.length && (
                     <Card>
                         <UsersList users={users} />
                     </Card>
                 )}
-                <br />
                 {formError && (
                     <ErrorModal
                         error={formError}
