@@ -71,7 +71,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
                     onChange={onUserNameChange}
                 />
             </FormGroup>
-
             <FormGroup className="user-age-field">
                 <Label htmlFor={userAgeId} text="User Age:"></Label>
                 <Field
@@ -82,7 +81,6 @@ const AddUser: React.FC<AddUserProps> = (props) => {
                     onChange={onUserAgeChange}
                 />
             </FormGroup>
-
             <FormGroup className="submit-button-field">
                 <Button text="Add User" type="submit" />
             </FormGroup>
