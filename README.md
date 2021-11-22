@@ -9,7 +9,6 @@ This Starter Project in-rich with handful extras for intuitive and rapid develop
 -   [React with SCSS](https://create-react-app.dev/docs/adding-a-sass-stylesheet)
 -   [Craco](https://github.com/gsoft-inc/craco)
 -   [Serve](https://www.npmjs.com/package/serve)
--   [React App / TypeScript alias](https://github.com/oklas/react-app-rewire-alias#using-craco)
 -   [Prettier ](https://prettier.io/)
 
 ### Optional VSCode Setup

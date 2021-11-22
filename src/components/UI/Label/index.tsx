@@ -6,11 +6,7 @@ type LabelProps = {
     htmlFor: string
 }
 
-const LabelGroup: React.FC<LabelProps> = ({
-    text,
-    htmlFor,
-    className = '',
-}) => {
+const Label: React.FC<LabelProps> = ({ text, htmlFor, className = '' }) => {
     let classes = 'label-control'
 
     if (!!className.trim()) {
@@ -24,4 +20,4 @@ const LabelGroup: React.FC<LabelProps> = ({
     )
 }
 
-export default LabelGroup
+export default Label

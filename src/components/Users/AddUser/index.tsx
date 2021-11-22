@@ -1,10 +1,7 @@
 import React, { useRef } from 'react'
-import Field from '@components/UI/Field'
-import FormGroup from '@components/UI/FormGroup'
-import Label from '@components/UI/Label'
-import Button from '@components/UI/Button'
-import User from '@models/User'
-import UserFormError from '@models/UserFormError'
+import { Field, FormGroup, Label, Button } from '../../UI'
+import User from '../../../models/User'
+import UserFormError from '../../../models/UserFormError'
 
 type AddUserProps = {
     onAddUser: (user: User) => void

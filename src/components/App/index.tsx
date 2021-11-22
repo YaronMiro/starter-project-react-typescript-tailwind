@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import AddUser from '@components/Users/AddUser'
-import UsersList from '@components/Users/UsersList'
-import Card from '@components/UI/Card'
-import ErrorModal from '@components/UI/ErrorModal'
-import User from '@models/User'
-import UserFormError from '@models/UserFormError'
+import AddUser from '../../components/Users/AddUser'
+import UsersList from '../../components/Users/UsersList'
+import { Card, ErrorModal } from '../UI'
+import User from '../../models/User'
+import UserFormError from '../../models/UserFormError'
 
 const App: React.FC = () => {
     const [users, setUsers] = useState<User[]>([])

@@ -1,4 +1,10 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "path-intellisense.mappings": {
+        "/": "${workspaceFolder}",
+        "components": "${workspaceFolder}/src/components",
+        "models": "${workspaceFolder}/src/models",
+        "styles": "${workspaceFolder}/src/styles",
+     }
 }
